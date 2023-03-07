@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NasabahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get("/bankdoa", [NasabahController::class, "index"]);
+Route::get("/bankdoa/{id}", [NasabahController::class, "show"]);
+Route::post("/bankdoa", [NasabahController::class, "store"]);
+Route::any("/bankdoa/{id}/nabung", [NasabahController::class, "nabung"]);
+Route::any("/bankdoa/{id}/ambil", [NasabahController::class, "ambil"]);
