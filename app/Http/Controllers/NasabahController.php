@@ -58,15 +58,15 @@ class NasabahController extends Controller
         $nasabah = Nasabah::query()
         ->where("id", $id)
         ->first();
-
+        $debet = $request->input('sampah') * 20000;
         $payloadtabungan = [
             'id_nasabah' => $id,
             'sampah' => $request->input('sampah'),
-            'debet' => $request->input('debet')
+            'debet' => $debet
         ];
         
 
-        $payloadnasabah = ['saldo' => $nasabah['saldo'] + $request->input('debet')];
+        $payloadnasabah = ['saldo' => $nasabah['saldo'] + $debet];
 
         $tabungan = Tabungan::query()->create($payloadtabungan);
         $nasabah->fill($payloadnasabah);

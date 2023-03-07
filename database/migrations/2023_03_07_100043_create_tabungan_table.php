@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tabungan', function (Blueprint $table) {
             $table->id();
             $table->integer("id_nasabah");
-            $table->integer("sampah")->nullable();
+            $table->decimal("sampah")->nullable();
             $table->integer("debet")->nullable();
             $table->integer("kredit")->nullable();
             $table->timestamps();
