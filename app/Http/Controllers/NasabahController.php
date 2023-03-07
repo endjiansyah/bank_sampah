@@ -24,6 +24,7 @@ class NasabahController extends Controller
             ->where("id", $id)
             ->first();
             $tabungan = Tabungan::query()
+            ->get()
             ->where("id_nasabah", $id);
 
         if (!isset($nasabah)) {
